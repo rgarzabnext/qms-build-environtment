@@ -18,7 +18,12 @@ fi
 
 # Install dependencies
 echo "Installing npm dependencies..."
-npm ci
+if [ -f "package-lock.json" ] || [ -f "npm-shrinkwrap.json" ]; then
+    npm ci
+else
+    echo "No package-lock.json found, using npm install instead..."
+    npm install
+fi
 
 # Build the project
 echo "Building Angular project..."

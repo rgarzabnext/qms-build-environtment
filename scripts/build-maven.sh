@@ -10,6 +10,9 @@ if [ ! -f "pom.xml" ]; then
     exit 1
 fi
 
+# Configure Maven to use insecure repositories for build environments
+export MAVEN_OPTS="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
+
 # Clean and compile
 echo "Cleaning and compiling Maven project..."
 mvn clean compile
