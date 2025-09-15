@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  qms-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qms-build-environment
+    volumes:
+      - .:/workspace
+      - maven-cache:/root/.m2
+      - npm-cache:/root/.npm
+    working_dir: /workspace
+    environment:
+      - NODE_ENV=production
+    networks:
+      - qms-build-network
+
+volumes:
+  maven-cache:
+    driver: local
+  npm-cache:
+    driver: local
+
+networks:
+  qms-build-network:
+    driver: bridge
