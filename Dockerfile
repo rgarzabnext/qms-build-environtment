@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     maven \
     && rm -rf /var/lib/apt/lists/*
 
+# Configure npm to use secure HTTPS registry
+RUN npm config set registry https://registry.npmjs.org/
+
 # Create workspace directory
 WORKDIR /workspace
 

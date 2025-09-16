@@ -5,9 +5,6 @@ set -e
 
 echo "Starting combined build process..."
 
-# Configure Maven to use insecure repositories for build environments
-export MAVEN_OPTS="-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
-
 # Build Angular frontend if present
 if [ -d "frontend" ] && [ -f "frontend/package.json" ]; then
     echo "Building Angular frontend..."
