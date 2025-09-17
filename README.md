@@ -4,10 +4,10 @@ A Docker-based build environment with Maven and Node.js for building Angular pro
 
 ## Features
 
-- **Java 17 JDK** - Latest long-term support version
-- **Maven 3.9.6** - For building Java projects and generating WAR files
-- **Node.js 20.x** - Latest LTS version for Angular builds
-- **Angular CLI** - Pre-installed globally for Angular project scaffolding and builds
+- **Java 21 JDK** - Latest long-term support version from Eclipse Temurin
+- **Maven 3.8.7** - For building Java projects and generating WAR files
+- **Node.js 24.x** - Latest version for Angular builds with npm 11.6.0
+- **Angular CLI** - Automatically installed during first Angular build
 - **Build Scripts** - Ready-to-use scripts for common build tasks
 - **Volume Caching** - Maven and npm caches for faster builds
 
@@ -126,10 +126,10 @@ project/
 
 ## Installed Versions
 
-- **Java**: OpenJDK 17
-- **Maven**: 3.9.6
-- **Node.js**: 20.x (latest LTS)
-- **Angular CLI**: Latest version
+- **Java**: OpenJDK 21 (Eclipse Temurin LTS)
+- **Maven**: 3.8.7
+- **Node.js**: 24.x (latest version with npm 11.6.0)
+- **Angular CLI**: Latest version (auto-installed)
 - **npm**: Bundled with Node.js
 
 ## Volume Caching
