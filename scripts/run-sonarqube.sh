@@ -5,11 +5,14 @@ set -e
 
 echo "Starting SonarQube analysis..."
 
-# Install SonarQube CLI if not already available
+# Verify SonarQube CLI is available
 if ! command -v sonar-scanner &> /dev/null; then
-    echo "SonarQube CLI not found. Installing..."
-    /scripts/setup-sonarqube.sh
+    echo "Error: SonarQube CLI (sonar-scanner) is not available."
+    echo "Please ensure the Docker image includes SonarQube CLI installation."
+    exit 1
 fi
+
+echo "SonarQube CLI version: $(sonar-scanner --version | head -n 1)"
 
 # Check if we have a sonar-project.properties file
 if [ ! -f "sonar-project.properties" ]; then

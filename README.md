@@ -8,7 +8,7 @@ A Docker-based build environment with Maven and Node.js for building Angular pro
 - **Maven 3.8.7** - For building Java projects and generating WAR files
 - **Node.js 24.x** - Latest version for Angular builds with npm 11.6.0
 - **Angular CLI** - Automatically installed during first Angular build
-- **SonarQube CLI** - Code quality analysis with on-demand installation
+- **SonarQube CLI** - Pre-installed code quality analysis tool
 - **Build Scripts** - Ready-to-use scripts for common build tasks
 - **Volume Caching** - Maven and npm caches for faster builds
 
@@ -63,15 +63,9 @@ Combined build for full-stack projects:
 - Automatically detects Maven backend (in `backend/` or root)
 - Builds both in the correct order
 
-### `/scripts/setup-sonarqube.sh`
-Sets up SonarQube CLI (sonar-scanner):
-- Downloads and installs the latest SonarQube CLI
-- Configures environment for code quality analysis
-- Only needs to be run once per container
-
 ### `/scripts/run-sonarqube.sh`
 Runs SonarQube code analysis:
-- Automatically installs SonarQube CLI if not present
+- Uses pre-installed SonarQube CLI for code analysis
 - Generates basic configuration if `sonar-project.properties` not found
 - Supports both Java and Node.js/Angular projects
 - Uses environment variables for SonarQube server configuration
@@ -116,10 +110,7 @@ docker-compose run --rm qms-build bash
 
 ### SonarQube Analysis
 ```bash
-# Setup SonarQube CLI (one-time setup)
-docker-compose run --rm qms-build /scripts/setup-sonarqube.sh
-
-# Run SonarQube analysis on any project
+# Run SonarQube analysis on any project (CLI is pre-installed)
 docker-compose run --rm qms-build /scripts/run-sonarqube.sh
 
 # Build and analyze in one command
@@ -171,7 +162,7 @@ project/
 - **Maven**: 3.8.7
 - **Node.js**: 24.x (latest version with npm 11.6.0)
 - **Angular CLI**: Latest version (auto-installed)
-- **SonarQube CLI**: 5.0.1.3006 (auto-installed on demand)
+- **SonarQube CLI**: 5.0.1.3006 (pre-installed)
 - **npm**: Bundled with Node.js
 
 ## Volume Caching
