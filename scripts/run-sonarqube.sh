@@ -35,8 +35,8 @@ EOF
     # Add language-specific configurations
     if [ -f "pom.xml" ]; then
         echo "# Java project detected" >> sonar-project.properties
-        echo "sonar.java.source=17" >> sonar-project.properties
-        echo "sonar.java.target=17" >> sonar-project.properties
+        echo "sonar.java.source=24" >> sonar-project.properties
+        echo "sonar.java.target=24" >> sonar-project.properties
         echo "sonar.java.binaries=target/classes" >> sonar-project.properties
         echo "sonar.exclusions=target/**,**/node_modules/**" >> sonar-project.properties
     elif [ -f "package.json" ]; then

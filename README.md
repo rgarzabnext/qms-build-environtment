@@ -4,7 +4,7 @@ A Docker-based build environment with Maven and Node.js for building Angular pro
 
 ## Features
 
-- **Java 17 JDK** - OpenJDK 17 for building Java projects
+- **Java 24 JDK** - Eclipse Temurin JDK 24 for building Java projects
 - **Maven 3.8.7** - For building Java projects and generating WAR files
 - **Node.js 24.x** - Latest version for Angular builds with npm 11.6.0
 - **Angular CLI** - Automatically installed during first Angular build
@@ -158,7 +158,7 @@ project/
 
 ## Installed Versions
 
-- **Java**: OpenJDK 17
+- **Java**: Eclipse Temurin JDK 24
 - **Maven**: 3.8.7
 - **Node.js**: 24.x (latest version with npm 11.6.0)
 - **Angular CLI**: Latest version (auto-installed)
@@ -199,8 +199,8 @@ sonar.sources=.
 sonar.exclusions=target/**,node_modules/**,dist/**,coverage/**
 
 # For Java projects
-sonar.java.source=17
-sonar.java.target=17
+sonar.java.source=24
+sonar.java.target=24
 sonar.java.binaries=target/classes
 
 # For TypeScript/Angular projects
