@@ -1,7 +1,7 @@
 # QMS Build Environment
 # Docker image with Maven and Node.js for building Angular projects and WAR files
 
-# Start with Node.js 24 and add Java 21
+# Start with Node.js 24 and add Java 24
 FROM node:24
 
 # Set environment variables
@@ -20,9 +20,16 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenJDK 17 from default repository
-RUN apt-get update && apt-get install -y openjdk-17-jdk \
-    && rm -rf /var/lib/apt/lists/*
+# Install Eclipse Temurin JDK 24
+ENV JAVA_HOME=/usr/lib/jvm/jdk-24
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+RUN mkdir -p /usr/lib/jvm \
+    && wget -O /tmp/openjdk24.tar.gz https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24.0.2%2B12/OpenJDK24U-jdk_x64_linux_hotspot_24.0.2_12.tar.gz \
+    && tar -xzf /tmp/openjdk24.tar.gz -C /usr/lib/jvm \
+    && mv /usr/lib/jvm/jdk-24.0.2+12 ${JAVA_HOME} \
+    && rm /tmp/openjdk24.tar.gz \
+    && update-alternatives --install /usr/bin/java java ${JAVA_HOME}/bin/java 1 \
+    && update-alternatives --install /usr/bin/javac javac ${JAVA_HOME}/bin/javac 1
 
 # Install Maven
 RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
